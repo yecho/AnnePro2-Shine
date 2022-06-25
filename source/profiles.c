@@ -267,7 +267,8 @@ void reactiveTerm(led_t *ledColors) {
   setAllKeysToBlank(ledColors);
 
   if (termPos < 0) {
-    color.p.red = 255;
+    color.p.red = 0xCC;
+    color.p.green = 0xCC;
     naiveDimLed(&color);
     lazyMark(ledColors, 0, -termPos, color);
     lazyMark(ledColors, 0, -termPos + 1, color);
@@ -275,6 +276,8 @@ void reactiveTerm(led_t *ledColors) {
     return;
   }
 
+  // to enable row blinking uncomment the following section
+/*
   if (rowBlink != -1) {
     color.p.red = 0;
     color.p.green = 255;
@@ -285,6 +288,7 @@ void reactiveTerm(led_t *ledColors) {
 
     rowBlink = -1;
   }
+*/
 
   /* 70*14 times per second */
   termAnim++;
@@ -292,17 +296,17 @@ void reactiveTerm(led_t *ledColors) {
     termAnim = 0;
   int16_t brightness = 0;
 
-  if (termAnim < 70) {
+  if (termAnim < 20) {
     brightness = termAnim * 51; /* full in 5 frames */
     if (brightness > 255)
       brightness = 255;
-  } else {
+  }// else {
     /* Starts with 70 */
-    brightness = 255 - (termAnim - 70) * 51;
-    if (brightness < 0)
-      brightness = 0;
-  }
-  color.p.green = 0;
+//    brightness = 255 - (termAnim - 105) * 51;
+//    if (brightness < 0)
+//    brightness = 0;
+//  }
+  color.p.green = brightness;
   color.p.red = brightness;
   naiveDimLed(&color);
   lazyMark(ledColors, 0, termPos, color);

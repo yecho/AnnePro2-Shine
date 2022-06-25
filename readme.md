@@ -8,7 +8,14 @@ but it provides the flexibility for creating custom effects.
 
 # Build and Flash
 
-**Warning: This will not work with the Obins Stock firmware**
+**Warning: This will not work with the Obins Stock firmware**   
+
+init/update git submodules with according versions:    
+- chibios:   
+commit 313416b8fda90d9973a749a0a35970956852c286 (HEAD, tag: ver19.1.3, tag: breaking_2020_q1)  
+- chibios-contrib:   
+commit ec9aec1231a9d43e4304c8158a49e42785811854 (HEAD, origin/feat-ht32_support)   
+
 
 To build both C15 and C18 versions run
 
