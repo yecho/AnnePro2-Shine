@@ -296,10 +296,16 @@ void reactiveTerm(led_t *ledColors) {
     termAnim = 0;
   int16_t brightness = 0;
 
-  if (termAnim < 20) {
+  if (termAnim < 10) {
     brightness = termAnim * 51; /* full in 5 frames */
-    if (brightness > 255)
+    if (brightness > 255) {
       brightness = 255;
+    }
+  } else if (10 <= termAnim && termAnim <= 20) {
+    brightness = 255 - (termAnim - 10) * 51;
+    if (brightness < 0) {
+      brightness = 0;
+    }
   }// else {
     /* Starts with 70 */
 //    brightness = 255 - (termAnim - 105) * 51;
