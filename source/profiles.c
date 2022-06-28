@@ -297,7 +297,7 @@ void reactiveTerm(led_t *ledColors) {
   int16_t brightness = 0;
 
   if (termAnim < 10) {
-    brightness = termAnim * 51; /* full in 5 frames */
+    brightness = termAnim * 51; /* full in 5 frames and stay at full brightness for 5 frames*/
     if (brightness > 255) {
       brightness = 255;
     }
